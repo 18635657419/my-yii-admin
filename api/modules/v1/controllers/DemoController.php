@@ -9,10 +9,7 @@ use api\controllers\OffAuthController;
 use api\modules\v1\models\LoginForm;
 
 /**
- * 登录接口
- *
- * Class SiteController
- * @package api\modules\v1\controllers
+ * demo接口
  */
 class DemoController extends \yii\rest\ActiveController
 {
