@@ -83,6 +83,13 @@ return [
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
+                    'controller' => ['v1/demo'],
+                    'pluralize' => false,
+                    'extraPatterns' => [
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
                     'controller' => ['v1/file'],
                     'pluralize' => false,
                     'extraPatterns' => [
