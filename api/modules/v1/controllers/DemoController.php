@@ -29,7 +29,7 @@ class DemoController extends \yii\rest\ActiveController
 
     public function actionIndex()
     {
-        return ['message'=>'api911111111通'];
+        return ['message'=>'api9哇哇哇哇哇11通'];
 
     }
 }
