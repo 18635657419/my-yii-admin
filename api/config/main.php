@@ -90,6 +90,18 @@ return [
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
+                    'controller' => ['v1/categories'],
+                    'extraPatterns' => [
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => ['v1/medias'],
+                    'extraPatterns' => [
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
                     'controller' => ['v1/file'],
                     'pluralize' => false,
                     'extraPatterns' => [
