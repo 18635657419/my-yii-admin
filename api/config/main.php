@@ -90,6 +90,12 @@ return [
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
+                    'controller' => ['v1/articles'],
+                    'extraPatterns' => [
+                    ],
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
                     'controller' => ['v1/categories'],
                     'extraPatterns' => [
                     ],

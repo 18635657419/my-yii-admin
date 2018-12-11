@@ -56,7 +56,7 @@ class Article extends \common\models\common\BaseModel
             [['content'], 'string'],
             [['position'], 'safe'],
             [['title', 'seo_key'], 'string', 'max' => 50],
-            [['cover', 'link'], 'string', 'max' => 100],
+            [['cover', 'link'], 'string', 'max' => 250],
             [['seo_content'], 'string', 'max' => 1000],
             [['description'], 'string', 'max' => 140],
             [['author'], 'string', 'max' => 40],
