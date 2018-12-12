@@ -6,7 +6,7 @@
  * Time: 17:34
  */
 
-namespace api\modules\v1\controllers;
+namespace api\modules\v2\controllers;
 
 use common\models\api\Category;
 use common\models\api\Media;

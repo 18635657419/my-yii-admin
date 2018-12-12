@@ -83,26 +83,26 @@ return [
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['v1/demo'],
+                    'controller' => ['v2/demo'],
                     'pluralize' => false,
                     'extraPatterns' => [
                     ],
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['v1/articles'],
+                    'controller' => ['v2/articles'],
                     'extraPatterns' => [
                     ],
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['v1/categories'],
+                    'controller' => ['v2/categories'],
                     'extraPatterns' => [
                     ],
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['v1/medias'],
+                    'controller' => ['v2/medias'],
                     'extraPatterns' => [
                     ],
                 ],
