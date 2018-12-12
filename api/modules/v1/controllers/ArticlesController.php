@@ -54,7 +54,7 @@ class ArticlesController extends \yii\rest\ActiveController
             ->andFilterWhere(['cate_id'=>$cate_id])
             ->all();
 
-        return ["message"=>"成功","code"=>1,'data'=>$models];
+        return $models;
 
     }
 
@@ -63,7 +63,7 @@ class ArticlesController extends \yii\rest\ActiveController
         if(empty($article)){
             return ["message"=>"Object not found: ".$id,"code"=>1002];
         }
-        return ["message"=>"成功","code"=>1,'data'=>$article];
+        return $article;
     }
 
 }
