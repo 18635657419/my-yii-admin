@@ -39,44 +39,23 @@ class ArticlesController extends \yii\rest\ActiveController
      * @time 2018/6/27 17:58
      */
     public function actionIndex(){
-
-
-        function add_show_sales($sales,$goods_id){
-
-            $count_goods_id = strlen($goods_id);
-
-            if($count_goods_id<=4){
-                $num_goods_id = sqrt(intval($goods_id));
-            }elseif (4<$count_goods_id || $count_goods_id<=8){
-                $num_goods_id = sqrt(sqrt(intval($goods_id)));
-            }elseif (8<$count_goods_id || $count_goods_id<=12){
-                $num_goods_id = sqrt(sqrt(sqrt(intval($goods_id))));
-            }
-
-            $add_count = $num_goods_id+ (time() - 1544532443)/5000;
-
-
-//            $add_count = sqrt(intval($goods_id))+ (time() - 1544532443)/4000;
-            return $sales+round($add_count,0);
-        }
-
-        $sales = 0;
-        $goods_id = 9;
-        return add_show_sales($sales,$goods_id);
-
-
-
         $params=Yii::$app->request->get();
-        $symbol=isset($params['symbol'])?$params['symbol']:"";
-        $type=isset($params['type'])?$params['type']:"";
+        $title=isset($params['title'])?$params['title']:"";
+        $seo_key=isset($params['seo_key'])?$params['seo_key']:"";
+        $seo_content=isset($params['seo_content'])?$params['seo_content']:"";
+        $cate_id=isset($params['cate_id'])?$params['cate_id']:"";
+        $author=isset($params['author'])?$params['author']:"";
+
         $models = Article::find()
+            ->andFilterWhere(['like','title',$title])
+            ->andFilterWhere(['like','seo_key',$seo_key])
+            ->andFilterWhere(['like','seo_content',$seo_content])
+            ->andFilterWhere(['like','author',$author])
+            ->andFilterWhere(['cate_id'=>$cate_id])
             ->all();
 
-        if(!empty($models)){
-            return ["message"=>"成功","code"=>1,'data'=>$models];
-        }else{
-            return ["message"=>"分类参数symbol错误","code"=>1002];
-        }
+        return ["message"=>"成功","code"=>1,'data'=>$models];
+
     }
 
     public function actionView($id){
@@ -84,7 +63,7 @@ class ArticlesController extends \yii\rest\ActiveController
         if(empty($article)){
             return ["message"=>"Object not found: ".$id,"code"=>1002];
         }
-        return $article;
+        return ["message"=>"成功","code"=>1,'data'=>$article];
     }
 
 }
