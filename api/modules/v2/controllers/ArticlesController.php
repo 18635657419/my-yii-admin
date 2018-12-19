@@ -24,7 +24,7 @@ class ArticlesController extends OffAuthController
         $actions = parent::actions();
 
         // 禁用动作
-        unset($actions['index']);
+//        unset($actions['index']);
         unset($actions['view']);
         unset($actions['create']);
         unset($actions['update']);
