@@ -14,8 +14,9 @@ use yii;
 use api\controllers\OffAuthController;
 use common\widgets\Helper;
 use addons\RfArticle\common\models\Article;
+use yii\rest\ActiveController;
 
-class ArticlesController extends \yii\rest\ActiveController
+class ArticlesController extends OffAuthController
 {
     public $modelClass = 'dons\RfArticle\common\models\Article';
     public function actions()
