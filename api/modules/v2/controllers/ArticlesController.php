@@ -15,6 +15,7 @@ use api\controllers\OffAuthController;
 use common\widgets\Helper;
 use addons\RfArticle\common\models\Article;
 use yii\rest\ActiveController;
+use yii\data\ActiveDataProvider;
 
 class ArticlesController extends OffAuthController
 {
@@ -24,7 +25,7 @@ class ArticlesController extends OffAuthController
         $actions = parent::actions();
 
         // 禁用动作
-//        unset($actions['index']);
+        unset($actions['index']);
         unset($actions['view']);
         unset($actions['create']);
         unset($actions['update']);
@@ -55,7 +56,26 @@ class ArticlesController extends OffAuthController
             ->andFilterWhere(['cate_id'=>$cate_id])
             ->all();
 
-        return $models;
+
+
+
+
+        $models = new ActiveDataProvider([
+            'query' => Article::find()
+                ->andFilterWhere(['like','title',$title])
+                ->andFilterWhere(['like','seo_key',$seo_key])
+                ->andFilterWhere(['like','seo_content',$seo_content])
+                ->andFilterWhere(['like','author',$author])
+                ->andFilterWhere(['cate_id'=>$cate_id]),
+            'pagination' => [
+                'pageSize' => Yii::$app->params['user.pageSize'],
+                'validatePage' => false,// 超出分页不返回data
+            ],
+        ]);
+        $list = $models->getModels();
+
+
+        return $list;
 
     }
 
