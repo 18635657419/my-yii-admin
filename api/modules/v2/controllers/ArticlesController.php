@@ -62,7 +62,7 @@ class ArticlesController extends \yii\rest\ActiveController
         $article=Article::find()->where(['id'=>$id])->one();
 
         if(strpos($article['link'],'?url=')){
-            $article['link'] = strstr( $article['link'], '?url='); //默认返回查找值@之后的尾部
+            $article['link'] = substr(strstr( $article['link'], '?url='),5); //默认返回查找值@之后的尾部
         }
 
         if(empty($article)){
