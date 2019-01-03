@@ -85,7 +85,7 @@ class ArticlesController extends OffAuthController
     }
 
     public function actionView($id){
-        $article=Article::find()->where(['id'=>$id])->one();
+        $article=Article::find()->where(['id'=>$id])->asarray()->one();
         $article['is_web'] = 0;
         if(strpos($article['link'],'?url=')){
             $article['link'] = substr(strstr( $article['link'], '?url='),5); //默认返回查找值@之后的尾部
