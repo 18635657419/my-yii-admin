@@ -89,7 +89,11 @@ class ArticlesController extends OffAuthController
         $article['is_web'] = 0;
         if(strpos($article['link'],'?url=')){
             $article['link'] = substr(strstr( $article['link'], '?url='),5); //默认返回查找值@之后的尾部
-            $article['is_web'] = 1;
+
+            if(strpos($article['link'],'bilibili')){
+                $article['is_web'] = 1;
+            }
+
         }
 
         if(empty($article)){
