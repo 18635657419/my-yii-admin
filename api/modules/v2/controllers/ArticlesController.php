@@ -56,26 +56,28 @@ class ArticlesController extends OffAuthController
             ->andFilterWhere(['cate_id'=>$cate_id])
             ->all();
 
+        $type=isset($params['type'])?$params['type']:"";
+        if($type=='list'){
+            $models = new ActiveDataProvider([
+                'query' => Article::find()
+                    ->andFilterWhere(['like','title',$title])
+                    ->andFilterWhere(['like','seo_key',$seo_key])
+                    ->andFilterWhere(['like','seo_content',$seo_content])
+                    ->andFilterWhere(['like','author',$author])
+                    ->andFilterWhere(['cate_id'=>$cate_id]),
+                'pagination' => [
+                    'pageSize' => Yii::$app->params['user.pageSize'],
+                    'validatePage' => false,// 超出分页不返回data
+                ],
+            ]);
+            $list = $models->getModels();
+            return $list;
+        }elseif ($type=='index'){
+            //随机取出12个
+            $index_list = Article::find()->asArray()->orderBy('RAND()')->limit(12)->all();
+            return $index_list;
+        }
 
-
-
-
-        $models = new ActiveDataProvider([
-            'query' => Article::find()
-                ->andFilterWhere(['like','title',$title])
-                ->andFilterWhere(['like','seo_key',$seo_key])
-                ->andFilterWhere(['like','seo_content',$seo_content])
-                ->andFilterWhere(['like','author',$author])
-                ->andFilterWhere(['cate_id'=>$cate_id]),
-            'pagination' => [
-                'pageSize' => Yii::$app->params['user.pageSize'],
-                'validatePage' => false,// 超出分页不返回data
-            ],
-        ]);
-        $list = $models->getModels();
-
-
-        return $list;
 
     }
 
