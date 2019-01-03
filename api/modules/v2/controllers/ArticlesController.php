@@ -67,17 +67,31 @@ class ArticlesController extends OffAuthController
                     ->andFilterWhere(['like','author',$author])
                     ->andFilterWhere(['cate_id'=>$cate_id])
                     ->andFilterWhere(['like','author',$key_word])
-                    ->orFilterWhere(['like','title',$key_word]),
+                    ->orFilterWhere(['like','title',$key_word])
+                    ->asarray(),
                 'pagination' => [
                     'pageSize' => Yii::$app->params['user.pageSize'],
                     'validatePage' => false,// 超出分页不返回data
                 ],
             ]);
             $list = $models->getModels();
+            for($m=0;$m<count($list);$m++){
+                $list[$m]['is_web'] = 0;
+                if(strpos($list[$m]['link'],'bilibili')){
+                    $list[$m]['is_web'] = 1;
+                }
+            }
             return $list;
         }elseif ($type=='index'){
             //随机取出12个
-            $index_list = Article::find()->asArray()->orderBy('RAND()')->limit(12)->all();
+            $index_list = Article::find()->asArray()->orderBy('RAND()')->limit(12)->asarray()->all();
+
+            for($m=0;$m<count($index_list);$m++){
+                $index_list[$m]['is_web'] = 0;
+                if(strpos($index_list[$m]['link'],'bilibili')){
+                    $index_list[$m]['is_web'] = 1;
+                }
+            }
             return $index_list;
         }
 
