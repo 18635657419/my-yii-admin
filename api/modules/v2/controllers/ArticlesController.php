@@ -47,6 +47,7 @@ class ArticlesController extends OffAuthController
         $seo_content=isset($params['seo_content'])?$params['seo_content']:"";
         $cate_id=isset($params['cate_id'])?$params['cate_id']:"";
         $author=isset($params['author'])?$params['author']:"";
+        $key_word=isset($params['key_word'])?$params['key_word']:"";
 
         $models = Article::find()
             ->andFilterWhere(['like','title',$title])
@@ -64,7 +65,9 @@ class ArticlesController extends OffAuthController
                     ->andFilterWhere(['like','seo_key',$seo_key])
                     ->andFilterWhere(['like','seo_content',$seo_content])
                     ->andFilterWhere(['like','author',$author])
-                    ->andFilterWhere(['cate_id'=>$cate_id]),
+                    ->andFilterWhere(['cate_id'=>$cate_id])
+                    ->andFilterWhere(['like','author',$key_word])
+                    ->orFilterWhere(['like','title',$key_word]),
                 'pagination' => [
                     'pageSize' => Yii::$app->params['user.pageSize'],
                     'validatePage' => false,// 超出分页不返回data
