@@ -61,7 +61,8 @@ class DemoController extends \yii\rest\ActiveController
         $data['nav'] = [];
 
         $data['slideshow'] = $banner;
+        return $data;
 
-        return  ['message' => '获取首页轮播图成功','code' => 1,'data' => $data];
+//        return  ['message' => '获取首页轮播图成功','code' => 1,'data' => $data];
     }
 }
