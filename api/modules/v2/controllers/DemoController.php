@@ -29,9 +29,9 @@ class DemoController extends \yii\rest\ActiveController
 
     public function actionIndex()
     {
-        $data= 'https://api.spapps.cn/backend/web/uploads/img/20190801/15646492610.jpg';
-
-        return $data;
+//        $data= 'https://api.spapps.cn/backend/web/uploads/img/20190801/15646492610.jpg';
+//
+//        return $data;
 
 
 //                $banner[$b]['image'] = Yii::$app->request->hostInfo.'/backend/web'.$banner[$b]['url'];
