@@ -35,7 +35,7 @@ class DemoController extends \yii\rest\ActiveController
 //                $banner[$b]['image'] = 'https://api.spapps.cn'.'/backend/web'.$banner[$b]['url'];
 
 
-        $banner['image']  = 'https://api.spapps.cn/backend/web/uploads/img/20190801/15646492610.jpg';
+        $banner[]['image']  = 'https://api.spapps.cn/backend/web/uploads/img/20190801/15646492610.jpg';
 
 //        $banner_url =  array_column($banner,'url');
 
